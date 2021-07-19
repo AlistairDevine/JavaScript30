@@ -18,29 +18,42 @@
     }
 
     // Regular
-
+    console.log('hello world');
     // Interpolated
-
+    console.log('Hello I am a %s string!', 'blazor');
     // Styled
-
+    console.log('%c I am some great text', 'font-size: 50px; background: red;');
     // warning!
-
+    console.warn('Oh noo');
     // Error :|
-
+    console.error('Error');
     // Info
-
+    console.info('information tag');
     // Testing
+    const p = document.querySelector('p');
 
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
     // clearing
-
+    //console.clear();
     // Viewing DOM Elements
-
+    console.log(p);
     // Grouping together
 
     // counting
+    console.count('Ali');
+    console.count('Ali');
+    console.count('Ali');
+    console.count('Ali');
+    console.count('Ali');
 
     // timing
-
+    console.time('fetching data');
+    fetch('https://api.github.com')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
   </script>
 </body>
 </html>

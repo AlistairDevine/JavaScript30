@@ -96,6 +96,46 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+  let lastChecked;
+
+  function handleCheck(e) {
+    //Check if the shift key was down and the user is checking a box
+    let inBetween = false;
+    console.log(this.checked);
+    if (e.shiftKey && this.checked) {
+      //loop over every single checkbox
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+          console.log('Starting to check in between');
+        }
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+    lastChecked = this;
+
+    //invert the checked boxes : not working
+    if (e.shiftKey && this.checked === false) {
+      console.log(lastChecked);
+      checkboxes.forEach(checkbox => {
+        if (checkbox === true || checkbox !== lastChecked) {
+          inBetween = !inBetween;
+        }
+        if (inBetween) {
+          checkbox.checkbox = false;
+        }
+      });
+    }
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+  //event listener for tracking the mouse movement
+
 </script>
 </body>
 </html>
